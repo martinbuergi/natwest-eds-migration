@@ -10,18 +10,34 @@
 .cards > ul > li {
   border: 1px solid #dadada;
   background-color: var(--background-color);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .cards .cards-card-body {
   margin: 16px;
 }
 
+.cards .cards-card-body h3 a {
+  color: var(--brand-color);
+  text-decoration: none;
+}
+
 .cards .cards-card-image {
   line-height: 0;
+  background-color: var(--light-color);
 }
 
 .cards > ul > li img {
   width: 100%;
   aspect-ratio: 4 / 3;
+  object-fit: contain;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.cards > ul > li img[src$=".jpeg"],
+.cards > ul > li img[src*="jpeg"] {
   object-fit: cover;
+  padding: 0;
 }
