@@ -21,6 +21,7 @@ header nav {
   min-height: var(--nav-height);
   padding: 0 24px;
   font-family: var(--body-font-family);
+  position: relative;
 }
 
 header nav[aria-expanded='true'] {
@@ -76,10 +77,22 @@ header nav .nav-tools a:hover {
   header nav {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 0 32px;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px 32px;
     max-width: 1264px;
-    padding: 0 32px;
+    padding: 12px 32px;
+    min-height: 64px;
+  }
+
+  header nav .nav-brand {
+    order: 1;
+    flex-basis: auto;
+  }
+
+  header nav .nav-sections {
+    order: 2;
+    flex: 1 1 auto;
   }
 
   header nav[aria-expanded='true'] {
