@@ -31,13 +31,15 @@
 .cards > ul > li img {
   width: 100%;
   aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.cards .cards-card-image:has(img[src*=".svg"]) {
+  background-color: var(--light-color);
+}
+
+.cards .cards-card-image:has(img[src*=".svg"]) img {
   object-fit: contain;
   padding: 12px;
   box-sizing: border-box;
-}
-
-.cards > ul > li img[src$=".jpeg"],
-.cards > ul > li img[src*="jpeg"] {
-  object-fit: cover;
-  padding: 0;
 }
