@@ -75,6 +75,7 @@ header nav .nav-tools a:hover {
 
   header nav {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 0 32px;
     max-width: 1264px;
