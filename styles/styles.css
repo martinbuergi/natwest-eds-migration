@@ -11,17 +11,19 @@
  */
 
 :root {
-  /* colors */
+  /* colors — NatWest brand purple palette (sampled from natwest.com) */
   --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
+  --light-color: #f2effa;
+  --dark-color: #3c1053;
   --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
+  --link-color: #5e10b1;
+  --link-hover-color: #3c1053;
+  --brand-color: #5a287d;
+  --brand-dark-color: #3c1053;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: arial, helvetica, sans-serif;
+  --heading-font-family: arial, helvetica, sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -110,6 +112,11 @@ h6 {
   font-weight: 600;
   line-height: 1.25;
   scroll-margin: 40px;
+  color: var(--brand-color);
+}
+
+h1 {
+  color: var(--background-color);
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
