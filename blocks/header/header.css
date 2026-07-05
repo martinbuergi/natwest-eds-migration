@@ -79,29 +79,30 @@ header nav .nav-tools a:hover {
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-    gap: 8px 32px;
+    gap: 0 32px;
     max-width: 1264px;
-    padding: 12px 32px;
-    min-height: 64px;
+    padding: 0 32px;
   }
 
   header nav .nav-brand {
     order: 1;
     flex-basis: auto;
+    height: 64px;
+    display: flex;
+    align-items: center;
   }
 
   header nav .nav-sections {
     order: 2;
     flex: 1 1 auto;
+    height: 64px;
+    display: flex;
+    align-items: center;
   }
 
   header nav[aria-expanded='true'] {
     min-height: 0;
     overflow: visible;
-  }
-
-  header nav .nav-hamburger {
-    display: none;
   }
 }
 
@@ -110,6 +111,12 @@ header nav .nav-hamburger {
   height: 22px;
   display: flex;
   align-items: center;
+}
+
+@media (width >= 900px) {
+  header nav .nav-hamburger {
+    display: none;
+  }
 }
 
 header nav .nav-hamburger button {
