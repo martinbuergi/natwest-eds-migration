@@ -33,12 +33,116 @@ header nav[aria-expanded='true'] {
   min-height: 100dvh;
 }
 
-/* secondary nav row (repurposed nav-tools div - top-level products/support links) */
+/* ROW 1 (nav-sections): dark purple/near-black tab bar - Personal/Premier/etc + Log in */
+header nav .nav-sections {
+  grid-area: sections;
+  flex: 1 1 auto;
+  display: none;
+  visibility: hidden;
+  background-color: var(--brand-dark-color);
+  margin: 0 -24px;
+  padding: 0 24px;
+  order: 1;
+  position: relative;
+}
+
+header nav[aria-expanded='true'] .nav-sections {
+  display: block;
+  visibility: visible;
+  align-self: start;
+}
+
+header nav .nav-sections ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: var(--body-font-size-s);
+  font-weight: 500;
+  margin: 0;
+}
+
+header nav .nav-sections ul > li {
+  font-weight: 700;
+}
+
+header nav .nav-sections ul > li > ul {
+  margin-top: 0;
+}
+
+header nav .nav-sections ul > li > ul > li {
+  font-weight: 500;
+}
+
+@media (width >= 900px) {
+  header nav .nav-sections {
+    display: block;
+    visibility: visible;
+    white-space: nowrap;
+    flex-basis: 100%;
+    order: 1;
+    margin: 0 -32px;
+    padding: 8px 32px;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul {
+    display: flex;
+    gap: 1.75em;
+    margin: 0;
+    align-items: center;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li {
+    flex: 0 1 auto;
+    position: relative;
+    font-weight: 600;
+    padding: 6px 4px;
+  }
+
+  /* Active-tab styling: first item (Personal) gets a white pill background */
+  header nav .nav-sections .default-content-wrapper > ul > li:first-child {
+    background-color: var(--background-color);
+    border-radius: 4px;
+    padding: 6px 14px;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li:first-child a {
+    color: var(--brand-dark-color);
+  }
+
+  header nav .nav-sections a {
+    color: var(--background-color);
+    text-decoration: none;
+    font-size: var(--body-font-size-xs);
+  }
+
+  header nav .nav-sections a:hover {
+    text-decoration: underline;
+  }
+
+  /* static visual-only "Log in" pill button, right-aligned in row 1 */
+  header nav .nav-sections::after {
+    content: 'Log in';
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--background-color);
+    border: 1px solid var(--background-color);
+    border-radius: 999px;
+    padding: 6px 20px;
+    font-size: var(--body-font-size-xs);
+    font-weight: 600;
+    pointer-events: none;
+  }
+}
+
+/* ROW 2 (nav-tools): lighter brand purple - logo+brand, Products/etc, search */
 header nav .nav-tools {
   grid-area: tools;
   background-color: var(--brand-color);
   margin: 0 -24px;
   padding: 0 24px;
+  order: 2;
+  position: relative;
 }
 
 header nav .nav-tools ul {
@@ -63,9 +167,28 @@ header nav .nav-tools a:hover {
 @media (width >= 900px) {
   header nav .nav-tools {
     flex-basis: 100%;
-    order: 10;
+    order: 2;
     margin: 0 -32px;
-    padding: 0 32px;
+    padding: 8px 32px 8px 180px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* static visual-only search box, right-aligned in row 2 */
+  header nav .nav-tools::after {
+    content: 'Search \1F50D';
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--background-color);
+    color: var(--dark-color);
+    border-radius: 4px;
+    padding: 6px 16px;
+    font-size: var(--body-font-size-xs);
+    min-width: 140px;
+    text-align: left;
+    pointer-events: none;
   }
 }
 
@@ -82,22 +205,6 @@ header nav .nav-tools a:hover {
     gap: 0 32px;
     max-width: 1264px;
     padding: 0 32px;
-  }
-
-  header nav .nav-brand {
-    order: 1;
-    flex-basis: auto;
-    height: 64px;
-    display: flex;
-    align-items: center;
-  }
-
-  header nav .nav-sections {
-    order: 2;
-    flex: 1 1 auto;
-    height: 64px;
-    display: flex;
-    align-items: center;
   }
 
   header nav[aria-expanded='true'] {
@@ -168,6 +275,7 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   transform: rotate(-135deg);
 }
 
+/* nav-brand: positioned visually inside/alongside row 2 (nav-tools), with logo icon */
 header nav .nav-brand {
   grid-area: brand;
   flex-basis: 128px;
@@ -179,68 +287,42 @@ header nav .nav-brand {
 header nav .nav-brand a {
   color: var(--brand-color);
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-header nav .nav-sections {
-  grid-area: sections;
-  flex: 1 1 auto;
-  display: none;
-  visibility: hidden;
-}
-
-header nav[aria-expanded='true'] .nav-sections {
-  display: block;
-  visibility: visible;
-  align-self: start;
-}
-
-header nav .nav-sections ul {
-  list-style: none;
-  padding-left: 0;
-  font-size: var(--body-font-size-s);
-  font-weight: 500;
-}
-
-header nav .nav-sections ul > li {
-  font-weight: 700;
-}
-
-header nav .nav-sections ul > li > ul {
-  margin-top: 0;
-}
-
-header nav .nav-sections ul > li > ul > li {
-  font-weight: 500;
+header nav .nav-brand a::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url('https://www.natwest.com/content/dam/championlogos/Natwest_Secondary_Horizontal_RGB_NEG.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
 }
 
 @media (width >= 900px) {
-  header nav .nav-sections {
-    display: block;
-    visibility: visible;
-    white-space: nowrap;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul {
+  header nav .nav-brand {
+    order: 3;
+    flex-basis: auto;
+    height: auto;
     display: flex;
-    gap: 2em;
-    margin: 0;
+    align-items: center;
+    position: absolute;
+    left: 32px;
+    top: 88px;
+    z-index: 1;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li {
-    flex: 0 1 auto;
-    position: relative;
-    font-weight: 600;
+  header nav .nav-brand a {
+    color: var(--background-color);
   }
 
-  header nav .nav-sections a {
-    color: var(--text-color);
-    text-decoration: none;
-  }
-
-  header nav .nav-sections a:hover {
-    color: var(--brand-color);
-    text-decoration: underline;
+  header nav .nav-brand a::before {
+    width: 28px;
+    height: 28px;
+    filter: brightness(0) invert(1);
   }
 }
-
-
