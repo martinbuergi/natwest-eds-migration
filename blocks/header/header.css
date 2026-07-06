@@ -169,9 +169,28 @@ header nav .nav-tools a:hover {
     flex-basis: 100%;
     order: 2;
     margin: 0 -32px;
-    padding: 8px 32px 8px 180px;
+    padding: 8px 32px 8px 190px;
     display: flex;
     align-items: center;
+    min-height: 44px;
+  }
+
+  /* logo + "NatWest" wordmark rendered directly in row 2 via pseudo-element,
+     avoids fragile cross-sibling absolute positioning */
+  header nav .nav-tools::before {
+    content: 'NatWest';
+    position: absolute;
+    left: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--background-color);
+    font-weight: 700;
+    font-size: var(--heading-font-size-s);
+    padding-left: 32px;
+    background-image: url('https://www.natwest.com/content/dam/championlogos/Natwest_Secondary_Horizontal_RGB_NEG.svg');
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: left center;
   }
 
   /* static visual-only search box, right-aligned in row 2 */
@@ -304,25 +323,10 @@ header nav .nav-brand a::before {
 }
 
 @media (width >= 900px) {
+  /* brand text+logo is rendered via .nav-tools::before instead (see above),
+     since nav-brand is a DOM sibling of nav-tools and cross-row absolute
+     positioning between siblings was unreliable across nav heights */
   header nav .nav-brand {
-    order: 3;
-    flex-basis: auto;
-    height: auto;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    left: 32px;
-    top: 88px;
-    z-index: 1;
-  }
-
-  header nav .nav-brand a {
-    color: var(--background-color);
-  }
-
-  header nav .nav-brand a::before {
-    width: 28px;
-    height: 28px;
-    filter: brightness(0) invert(1);
+    display: none;
   }
 }
